@@ -1,0 +1,14 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 25
+
+development:
+  <<: *default
+  database: battleship_development
+  username: postgres
+  password: postgres
+
+test:
+  <<: *default
+  database: battleship_test
