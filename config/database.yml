@@ -1,14 +1,24 @@
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  pool: 25
+#default: &default
+#  adapter: postgresql
+#  encoding: unicode
+#  pool: 25
+#
+#development:
+#  <<: *default
+#  database: battleship_development
+#  username: postgres
+#  password: postgres
+#
+#test:
+#  <<: *default
+#  database: battleship_test
 
 development:
-  <<: *default
-  database: battleship_development
-  username: postgres
-  password: postgres
-
-test:
-  <<: *default
-  database: battleship_test
+  adapter: mysql2
+  encoding: utf8
+  database: battle_ship
+  username: battle_ship
+  host: localhost
+  pool: 5
+  port: 5432
+  password: mak123654789
