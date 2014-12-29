@@ -1,33 +1,36 @@
 /** @jsx React.DOM */
 
 var React           = require("react");
+var RouteHandler    = require('react-router').RouteHandler;
 var Fluxxor         = require('fluxxor');
 var FluxMixin       = Fluxxor.FluxMixin(React);
 var StoreWatchMixin = Fluxxor.StoreWatchMixin;
 var Header          = require('./Header.jsx');
 
 var App = React.createClass({
-  // mixins: [FluxMixin, StoreWatchMixin()],
+  mixins: [FluxMixin, StoreWatchMixin('GameStore')],
 
   getDefaultProps: function() {
     return {
-      name: 'React-Fluxxor Skeleton'
+      headerName: 'Battleship'
     }
   },
 
-  // getStateFromFlux: function() {
-  //   var flux = this.getFlux();
+  getStateFromFlux: function() {
+    var flux = this.getFlux();
 
-  //   return {
-  //     bookmarks: flux.store("BookmarkStore").getState()
-  //   };
-  // },
+    console.log(this);
+
+    return {
+      gameData: flux.store("GameStore").getState()
+    };
+  },
 
   render: function() {
     return (
       <div>
-        <Header name={this.props.name} />
-        {this.props.activeRouteHandler()}
+        <Header headerName={this.props.headerName} />
+        <RouteHandler gameData={this.state.gameData} />
       </div>
     )
   }

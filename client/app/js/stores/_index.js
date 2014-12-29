@@ -1,3 +1,5 @@
+var GameStore = require('./game.js');
+
 module.exports = {
-  // stores
+  GameStore: new GameStore()
 };

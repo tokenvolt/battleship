@@ -1,4 +1,2 @@
 var React   = require("react");
-var routes  = require('./components/Routes.jsx');
-
-React.renderComponent(routes, document.getElementById('app'));
+var Routes  = require('./components/Routes.jsx');
