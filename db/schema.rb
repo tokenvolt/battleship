@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20141229015121) do
     t.string   "current_sign_in_ip",     limit: 255
     t.string   "last_sign_in_ip",        limit: 255
     t.string   "nick_name",              limit: 255
+    t.string   "auth_token",             limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end

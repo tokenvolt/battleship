@@ -34,6 +34,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       #User nick name
 
       t.string :nick_name
+      t.string :auth_token,                  unique: true
 
       t.timestamps
     end
