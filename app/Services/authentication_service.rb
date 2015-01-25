@@ -1,23 +1,37 @@
 class AuthenticationService
+  attr_reader :params
+
+  def initialize(params = {})
+    @params = params
+  end
+
   #Method for registration new user
-  def register(email, nick, password, password_confirmation)
-    if user = User.create(email: email, nick: nick, password: password, password_confirmation: password_confirmation)
-      #Если успешно зарегистрировались, то как ты говорил, возвращаем самого юзера
-      return user
+  def register
+    user = User.create(params.merge(auth_token: AuthenticationService.generate_auth_token))
+
+    if user.valid?
+      user
     else
-      #Я так понимаю, если он не создастья, то в юзере остануться ошибки с модели, верно же?
-      return user.errors
+      user.errors
     end
   end
 
-  #Метод, который будет вызываться перед каждым запросом, что бы проверять auth_token
+  #Метод, который будет вызываться перед каждым запросом, что бы проверять auth_token(это перенесем в контроллер в след.версии)
   def check_user(auth_token)
-    user = User.where('auth_token = ?', auth_token).first
+    user = User.where(auth_token: auth_token).first
     if user.present?
-      return user
+      user
     else
-      return 'wrong auth token'
+      'wrong auth token' #Сообщение, если юзера нет
     end
   end
-aa
+
+  #Метод для генерации уникального токена при создании пользователя
+  def self.generate_auth_token
+    loop do
+      random_token = SecureRandom.urlsafe_base64(nil, false)
+      break random_token unless User.exists?(auth_token: random_token)
+    end
+  end
+
 end
