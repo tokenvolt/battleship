@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 gem 'pg'
+gem  'mysql2'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'active_model_serializers'
 gem 'devise'
