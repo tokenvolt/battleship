@@ -11,6 +11,6 @@ class User < ActiveRecord::Base
   #nick_name
   validates :nick_name, presence: true, length: {minimum: 2}
 
-
+has_many :games
 
 end

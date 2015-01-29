@@ -1,14 +1,24 @@
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  username: postgres
-  password: postgres
-  pool: 25
+#default: &default
+#  adapter: postgresql
+#  encoding: unicode
+#  username: postgres
+#  password: postgres
+#  pool: 25
 
 development:
-  <<: *default
-  database: battleship_development
-
-test:
-  <<: *default
-  database: battleship_test
+#  <<: *default
+#  database: battleship_development
+  #Моя база данных, просто закомментируй, когда будешь тестить, не удаляй и вообще, как в таких ситуациях поступают?
+  #У тебя своя база, у меня своя, мы что, после каждого коммита будем этот файл переписывать?
+  adapter: mysql2
+  encoding: utf8
+  database: battle_ship
+  username: battle_ship
+  host: localhost
+  pool: 5
+  port: 5432
+  password: mak123654789
+#
+#test:
+#  <<: *default
+#  database: battleship_test
