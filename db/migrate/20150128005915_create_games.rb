@@ -5,11 +5,10 @@ class CreateGames < ActiveRecord::Migration
       t.integer :first_user_id #First user id
       t.integer :second_user_id #Secon user id
       #Diffrent states of game duration
-      t.integer :status, default: 0 #Good practice is to let the first declared status be the default. верно?
-      #Tru if first_user won; false if second_ser won
-      t.boolean :result, default: nil
-      #Поле, в котором будет хранится длительность игры, правильно ли его делать time, или лучше все таки timestemp и в чем разница
-      t.time :playing_time
+      t.string :status
+      #Поле, в котором будет хранится длительность игры
+      t.datetime :finished_at
+      t.string :ships_position
 
       t.timestamps
     end

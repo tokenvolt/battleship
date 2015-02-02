@@ -9,6 +9,7 @@ gem 'active_model_serializers'
 gem 'devise'
 gem 'rack-cors', require: 'rack/cors'
 gem 'haml-rails'
+gem 'aasm'
 
 group :development, :test do
   gem 'foreman'
